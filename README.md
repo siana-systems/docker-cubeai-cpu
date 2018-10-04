@@ -1,4 +1,4 @@
-# Using Keras - w/out GPU - via Docker
+# Using Keras via Docker for CPU-Only Host!
 
 This directory contains a refactored `Dockerfile` of the official version from the [official Keras-Docker](https://github.com/keras-team/keras/tree/master/docker) to target a host machine without GPU.
 
