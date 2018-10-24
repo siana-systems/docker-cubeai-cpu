@@ -64,12 +64,17 @@ RUN conda install -y python=${python_version} && \
       pygpu \
       pyyaml \
       scikit-learn \
-      six && \
-    git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
-    pip install git+git://github.com/keras-team/keras.git && \
-    conda clean -yt
+      six
 
+# SIANA add-on: audio processing lib
 RUN conda install -c conda-forge librosa
+
+# install Keras (2.2.0 required by Cube.AI)
+RUN git clone --branch 2.2.0 git://github.com/keras-team/keras.git /src && \
+#    pip install -e /src[tests] && \
+    pip install git+git://github.com/keras-team/keras.git@2.2.0
+
+RUN conda clean -yt
 
 ENV PYTHONPATH='/src/:$PYTHONPATH'
 

@@ -10,7 +10,7 @@ TEST=tests/
 SRC?=$(shell dirname `pwd`)
 
 build:
-	docker build -t $(IMAGE) --build-arg python_version=$(PYTHON_VERSION) -f $(DOCKER_FILE) .
+	docker build --no-cache -t $(IMAGE) --build-arg python_version=$(PYTHON_VERSION) -f $(DOCKER_FILE) .
 
 bash: build
 	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(IMAGE) bash
