@@ -44,14 +44,16 @@ RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
 
 USER $NB_USER
 
+# install Python...
 ARG python_version=3.6
-
 RUN conda install -y python=${python_version} && \
-    pip install --upgrade pip && \
-    pip install \
-      sklearn_pandas \
-      tensorflow && \
-    conda install \
+    pip install --upgrade pip
+
+# install TensorFlow (ignore Six dependency => already installed thru distutils)
+RUN pip install --ignore-installed six sklearn_pandas tensorflow
+
+# install python modules...
+RUN conda install \
       bcolz \
       h5py \
       matplotlib \
@@ -63,16 +65,10 @@ RUN conda install -y python=${python_version} && \
       pydot \
       pygpu \
       pyyaml \
-      scikit-learn \
-      six
+      scikit-learn
 
 # SIANA add-on: audio processing lib
 RUN conda install -c conda-forge librosa
-
-# install Keras (2.2.0 required by Cube.AI)
-RUN git clone --branch 2.2.0 git://github.com/keras-team/keras.git /src && \
-#    pip install -e /src[tests] && \
-    pip install git+git://github.com/keras-team/keras.git@2.2.0
 
 RUN conda clean -yt
 
