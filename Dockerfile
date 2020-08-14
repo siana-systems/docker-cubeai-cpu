@@ -1,7 +1,27 @@
-# modified Keras dockerfile for CPU-only:
+#------------------------------------------------------------------------------
+# @author: SIANA Systems
+# @date: 04/2018 (original)
+#
+# Docker used for training models for ST Cube.AI
+#  => TF:1.15 + Keras:2.3.1
+#
+# IMPORTANT: a copy of the Cube.AI must be present under: ./cubeai
+#
+# Based on Keras dockerfile (for CPU-only):
 # ref: https://github.com/keras-team/keras/issues/8667
+#------------------------------------------------------------------------------
 
-FROM debian:stretch
+FROM debian:buster
+
+# create 'siana' user...
+ENV NB_USER siana
+ENV NB_UID 1000
+RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
+
+# Copy Cube.AI
+COPY --chown=siana:root cubeai /opt/cubeai
+ENV X_CUBE_AI_DIR /opt/cubeai
+ENV PATH $X_CUBE_AI_DIR/Utilities/linux:$PATH
 
 # Install missing dependencies from debian
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,6 +33,7 @@ RUN apt-get update -qq \
 
 # Install system packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential \
       bzip2 \
       g++ \
       git \
@@ -20,6 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libgl1-mesa-glx \
       libhdf5-dev \
       openmpi-bin \
+      nano \
       wget && \
     rm -rf /var/lib/apt/lists/*
 
@@ -33,12 +55,7 @@ RUN wget --quiet --no-check-certificate https://repo.continuum.io/miniconda/Mini
     rm Miniconda3-4.2.12-Linux-x86_64.sh && \
     echo export PATH=$CONDA_DIR/bin:'$PATH' > /etc/profile.d/conda.sh
 
-# Install Python packages and keras
-ENV NB_USER keras
-ENV NB_UID 1000
-
-RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
-    chown $NB_USER $CONDA_DIR -R && \
+RUN chown $NB_USER $CONDA_DIR -R && \
     mkdir -p /src && \
     chown $NB_USER /src
 
@@ -50,7 +67,10 @@ RUN conda install -y python=${python_version} && \
     pip install --upgrade pip
 
 # install TensorFlow (ignore Six dependency => already installed thru distutils)
-RUN pip install --ignore-installed six sklearn_pandas tensorflow
+RUN pip install --ignore-installed six \
+      invoke         \
+      sklearn_pandas \
+      tensorflow==1.15
 
 # install python modules...
 RUN conda install \
@@ -67,8 +87,16 @@ RUN conda install \
       pyyaml \
       scikit-learn
 
-# SIANA add-on: audio processing lib
+# install audio processing lib
 RUN conda install -c conda-forge librosa
+
+# install Keras (2.3.1 required by Cube.AI)
+RUN git clone --branch 2.3.1 git://github.com/keras-team/keras.git /src && \
+#   pip install -e /src[tests] && \
+    pip install git+git://github.com/keras-team/keras.git@2.3.1
+
+# disable embedded TF.Keras (to use keras.io instead)
+ENV TF_KERAS=0
 
 RUN conda clean -yt
 

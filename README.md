@@ -4,7 +4,9 @@ This directory contains a refactored `Dockerfile` of the [official Keras-Docker]
 
 ## Pre-requisites
 
-You will need docker installed on your system...
+You will need:
+  * docker installed on your system
+  * a copy of ST Cube-AI in ./cubeai
 
 ## Running the container
 

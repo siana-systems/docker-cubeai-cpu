@@ -2,7 +2,7 @@ help:
 	@cat Makefile
 
 #IMAGE="siana/keras-cpu"
-IMAGE="siana/tf2-keras-cpu"
+IMAGE="siana/tf1.15-keras2.3.1-cpu"
 DOCKER_FILE=Dockerfile
 DOCKER=docker
 BACKEND=tensorflow
