@@ -50,6 +50,9 @@ push:
 
 #--->> USER Tasks <<-------
 
+pull:
+	$(DOCKER) pull $(NAME)
+
 bash:
 	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(LATEST) bash
 
