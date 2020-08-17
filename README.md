@@ -18,7 +18,9 @@ You will need:
 
 ## Building the image
 Open a terminal into your <root> and run:
-'''make build'''
+'''bash
+ make build
+ '''
 Docker will launch and build a new image named: "tf1.15-keras2.3.1-cpu"
 
 On completion, you should see the new image listed: 
