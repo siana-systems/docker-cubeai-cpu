@@ -11,7 +11,7 @@ Notes:
  
 You will need:
   * to install [Docker Engine](https://docs.docker.com/engine/install/)
-  * a copy of ST Cube-AI in ./cubeai:
+  * a copy of ST Cube-AI:
     * download / install the [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
     * install the [X-Cube-AI](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-ai.html) 
     * create a simlink in ~/docker-keras-cpu/cubeai to your installed X-Cube-AI version, typically under:  ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>
