@@ -19,7 +19,7 @@ You will need:
 ## Building the image
 Open a terminal into your ~/docker-keras-cpu and run:
 ```console
- foor@bar: ~/docker-keras-cpu$ make build
+ foo@bar: ~/docker-keras-cpu$ make build
 ```
 Docker will launch and proceed to build a new image named: "tf1.15-keras2.3.1-cpu"
 
