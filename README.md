@@ -10,8 +10,8 @@ Note: the following instructions were tested on Linux/Ubuntu 18.04
 To run a container from the SIANA hosted image on Docker Hub, you'll need to:
   * instal [Docker Engine](https://docs.docker.com/engine/install/)
   * check that you have *make* installed, if not:
-    * sudo apt-get update
-    * sudo apt-get install make
+    * *sudo apt-get update*
+    * *sudo apt-get install make*
   * download/save the *Makefile* in a working directory
   
 Assuming that you copied the *Makefile* in your home (~/), to run the container:
