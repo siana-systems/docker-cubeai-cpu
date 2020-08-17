@@ -1,6 +1,6 @@
 # SIANA Cube-AI Development Docker for CPU-Host
 
-This repo is used to work with a docker image for deep-learning development targeting the STMicroelectronics Cube-AI platform.
+This repo provides a docker image for deep-learning development targeting the STMicroelectronics Cube-AI platform.
 
 At its core, it includes a cube-ai compatible versions of TensorFlow and Keras, aka keras.io. In addition, several typical packages are included to help with parsing data (images and audio, refer to the Dockerfile for details.) Note: this dockerfile is based on the `Dockerfile` of the [official Keras-Docker](https://github.com/keras-team/keras/tree/master/docker), which initially targetted GPU host machines.
 
