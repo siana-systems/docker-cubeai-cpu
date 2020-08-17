@@ -29,12 +29,13 @@ foo@bar: ~/docker-keras-cpu$ docker image list
 ```
 
 ## Running the container
-To run the container, from your <root> simply run:
+To run the container, simply run:
  ```console
  foo@bar: ~/docker-keras-cpu$ make bash
  ```
+ From the terminal, you can then run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.)
+  
+ The doker container maps /src/workspace/ to your ~/docker-keras-cpu folder on the host side.
  
- The doker container maps /src/workspace/ to you ~/docker-keras-cpu folder on the host side.
- 
- From the terminal, you can then run your TensorFlow/Keras python scripts and the Cube-AI CLI (stm32cubeai.)
+ Note: review the Makefile targets for different runtime options.
 
