@@ -50,15 +50,15 @@ push:
 
 #--->> USER Tasks <<-------
 
-bash: build
-	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(IMAGE) bash
+bash:
+	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(LATEST) bash
 
-ipython: build
-	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(IMAGE) ipython
+ipython:
+	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(LATEST) ipython
 
-notebook: build
-	$(DOCKER) run -it -v $(SRC):/src/workspace --net=host --env KERAS_BACKEND=$(BACKEND) $(IMAGE)
+notebook:
+	$(DOCKER) run -it -v $(SRC):/src/workspace --net=host --env KERAS_BACKEND=$(BACKEND) $(LATEST)
 
-test: build
-	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(IMAGE) py.test $(TEST)
+test:
+	$(DOCKER) run -it -v $(SRC):/src/workspace --env KERAS_BACKEND=$(BACKEND) $(LATEST) py.test $(TEST)
 
