@@ -8,7 +8,7 @@ At its core, it includes a cube-ai compatible versions of TensorFlow and Keras, 
 Note: the following instructions were tested on Linux/Ubuntu 18.04
 
 To run a container from the SIANA hosted image on Docker Hub, you'll need to:
-  * instal [Docker Engine](https://docs.docker.com/engine/install/)
+  * install [Docker Engine](https://docs.docker.com/engine/install/)
   * check that you have *make* installed, if not:
     * *sudo apt-get update*
     * *sudo apt-get install make*
@@ -18,7 +18,7 @@ Assuming that you copied the *Makefile* in your home (~/), to run the container:
  ```console
  foo@bar: ~/$ make bash
  ```
-Docker will launch and proceed to download the SIANA image form Docker Hub (which may take a while...), then it'll run a container and open a bash terminal into it. From this terminal, you can then run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.)
+Docker will launch and proceed to download the SIANA image form Docker Hub (which may take a while...) Then, it'll run a container and open a bash terminal into it. From this terminal, you can run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.)
   
 The doker container maps /src/workspace/ to your ~/ directory on the host side.
  
