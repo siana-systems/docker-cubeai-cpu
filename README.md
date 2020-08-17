@@ -39,6 +39,7 @@ You will need:
     * install the [X-Cube-AI](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-ai.html) 
     * create a simlink in ~/docker-keras-cpu/cubeai to your installed X-Cube-AI version, typically under:  ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>
 
+###building the image
 Open a terminal into your ~/docker-keras-cpu and run:
 ```console
  foo@bar: ~/docker-keras-cpu$ make build
