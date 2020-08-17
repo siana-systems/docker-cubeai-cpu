@@ -12,7 +12,7 @@ To run a container from the SIANA hosted image on Docker Hub, you'll need to:
   * check that you have *make* installed, if not:
     * sudo apt-get update
     * sudo apt-get install make
-  * download/save the Makefile in a working directory
+  * download/save the *Makefile* in a working directory
   
 Assuming that you copied the *Makefile* in your home (~/), to run the container:
  ```console
