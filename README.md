@@ -7,30 +7,34 @@ At its core, it includes a cube-ai compatible versions of TensorFlow and Keras, 
 ## Pre-requisites
 Notes:
   * the following instructions were tested on Linux/Ubuntu 18.04
-  * <<root>> refers to the local path where you checked out this repo.
+  * the following instructions assumed the root path under: ~/docker-keras-cpu
  
 You will need:
   * to install [Docker Engine](https://docs.docker.com/engine/install/)
   * a copy of ST Cube-AI in ./cubeai:
     ** download / install the [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
     ** install the [X-Cube-AI](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-ai.html) 
-    ** create a simlink from <root>/cubeai to your installed X-Cube-AI (typically under: ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>)
+    ** create a simlink in ~/docker-keras-cpu/cubeai to your installed X-Cube-AI version (typically under: ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>)
 
 ## Building the image
-Open a terminal into your <root> and run:
-'''bash
- make build
- '''
-Docker will launch and build a new image named: "tf1.15-keras2.3.1-cpu"
+Open a terminal into your ~/docker-keras-cpu and run:
+```console
+ foor@bar: ~/docker-keras-cpu$ make build
+```
+Docker will launch and proceed to build a new image named: "tf1.15-keras2.3.1-cpu"
 
 On completion, you should see the new image listed: 
-'''docker image list'''
+```console
+foo@bar: ~/docker-keras-cpu$ docker image list
+```
 
 ## Running the container
 To run the container, from your <root> simply run:
- '''make bash'''
+ ```console
+ foo@bar: ~/docker-keras-cpu$ make bash
+ ```
  
- The doker container maps /src/workspace/ to you <root> folder on the host side.
+ The doker container maps /src/workspace/ to you ~/docker-keras-cpu folder on the host side.
  
  From the terminal, you can then run your TensorFlow/Keras python scripts and the Cube-AI CLI (stm32cubeai.)
 
