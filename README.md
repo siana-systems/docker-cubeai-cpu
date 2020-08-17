@@ -7,7 +7,7 @@ At its core, it includes a cube-ai compatible versions of TensorFlow and Keras, 
 ## Pre-requisites
 Notes:
   * the following instructions were tested on Linux/Ubuntu 18.04
-  * <root> refers to the local path where you checked out this repo.
+  * <<root>> refers to the local path where you checked out this repo.
  
 You will need:
   * to install [Docker Engine](https://docs.docker.com/engine/install/)
