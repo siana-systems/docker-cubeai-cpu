@@ -3,7 +3,7 @@
 # @date: 04/2018 (original)
 #
 # Docker used for training models for ST Cube.AI
-#  => TF:1.15 + Keras:2.3.1
+#  => TF:2.0.0 + Keras:2.3.1
 #
 # IMPORTANT: a copy of the Cube.AI must be present under: ./cubeai
 #
