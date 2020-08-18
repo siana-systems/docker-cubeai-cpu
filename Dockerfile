@@ -70,7 +70,7 @@ RUN conda install -y python=${python_version} && \
 RUN pip install --ignore-installed six \
       invoke         \
       sklearn_pandas \
-      tensorflow==1.15
+      tensorflow==2.0.0
 
 # install python modules...
 RUN conda install \
@@ -94,6 +94,9 @@ RUN conda install -c conda-forge librosa
 RUN git clone --branch 2.3.1 git://github.com/keras-team/keras.git /src && \
 #   pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git@2.3.1
+
+# install Keras-Tuner (latest)
+RUN pip install keras-tuner
 
 # disable embedded TF.Keras (to use keras.io instead)
 ENV TF_KERAS=0
