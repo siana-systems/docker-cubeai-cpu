@@ -1,4 +1,4 @@
-# SIANA Cube-AI Development Docker for CPU-Host
+# STM32 Cube-AI Development Docker for CPU-Host
 
 This repo provides a docker image for deep-learning development targeting the STMicroelectronics Cube-AI platform.
 
