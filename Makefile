@@ -17,8 +17,8 @@ help:
 	@cat Makefile
 
 # Docker image info
-NAME="siana/tf2-keras2.3.1-cpu"
-VERSION="v1"
+NAME="siana/tf2.5-cubeai7.0-cpu"
+VERSION="v2"
 DOCKER_FILE=Dockerfile
 DOCKER=docker
 

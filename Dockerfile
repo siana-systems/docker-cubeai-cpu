@@ -3,7 +3,7 @@
 # @date: 04/2018 (original)
 #
 # Docker used for training models for ST Cube.AI
-#  => TF:2.0.0 + Keras:2.3.1
+#  => now support TF 2.5
 #
 # IMPORTANT: a copy of the Cube.AI must be present under: ./cubeai
 #
@@ -49,10 +49,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV CONDA_DIR /opt/conda
 ENV PATH $CONDA_DIR/bin:$PATH
 
-RUN wget --quiet --no-check-certificate https://repo.continuum.io/miniconda/Miniconda3-4.2.12-Linux-x86_64.sh && \
-    echo "c59b3dd3cad550ac7596e0d599b91e75d88826db132e4146030ef471bb434e9a *Miniconda3-4.2.12-Linux-x86_64.sh" | sha256sum -c - && \
-    /bin/bash /Miniconda3-4.2.12-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
-    rm Miniconda3-4.2.12-Linux-x86_64.sh && \
+RUN wget --quiet --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+    echo "1314b90489f154602fd794accfc90446111514a5a72fe1f71ab83e07de9504a7 *Miniconda3-latest-Linux-x86_64.sh" | sha256sum -c - && \
+    /bin/bash /Miniconda3-latest-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
+    rm Miniconda3-latest-Linux-x86_64.sh && \
     echo export PATH=$CONDA_DIR/bin:'$PATH' > /etc/profile.d/conda.sh
 
 RUN chown $NB_USER $CONDA_DIR -R && \
@@ -62,7 +62,7 @@ RUN chown $NB_USER $CONDA_DIR -R && \
 USER $NB_USER
 
 # install Python...
-ARG python_version=3.6
+ARG python_version=3.8
 RUN conda install -y python=${python_version} && \
     pip install --upgrade pip
 
@@ -70,7 +70,7 @@ RUN conda install -y python=${python_version} && \
 RUN pip install --ignore-installed six \
       invoke         \
       sklearn_pandas \
-      tensorflow==2.0.0
+      tensorflow
 
 # install python modules...
 RUN conda install \
@@ -90,16 +90,8 @@ RUN conda install \
 # install audio processing lib
 RUN conda install -c conda-forge librosa
 
-# install Keras (2.3.1 required by Cube.AI)
-RUN git clone --branch 2.3.1 git://github.com/keras-team/keras.git /src && \
-#   pip install -e /src[tests] && \
-    pip install git+git://github.com/keras-team/keras.git@2.3.1
-
 # install Keras-Tuner (latest)
 RUN pip install keras-tuner
-
-# disable embedded TF.Keras (to use keras.io instead)
-ENV TF_KERAS=0
 
 RUN conda clean -yt
 
