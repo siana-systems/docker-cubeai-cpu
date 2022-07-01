@@ -46,7 +46,8 @@ build:
 	$(DOCKER) tag $(IMAGE) $(LATEST)
 
 push:
-	$(DOCKER) push $(NAME)
+	$(DOCKER) push $(LATEST)
+	$(DOCKER) push $(BUILD)
 
 #--->> USER Tasks <<-------
 
