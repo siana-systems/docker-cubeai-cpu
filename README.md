@@ -17,7 +17,7 @@ To run the container in bash mode:
  ```console
  foo@bar: ~/$ make bash
  ```
-The fist time around, Docker will proceed to download the SIANA image form Docker Hub (which may take a while...) Then, it'll run a container and open a bash terminal into it. From this terminal, you can run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.) The docker container maps its /src/workspace/ to your working/training folder on the host side.
+The first time around, Docker will proceed to download the SIANA image form Docker Hub (which may take a while...) Then, it'll run a container and open a bash terminal. From this terminal, you can run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.) The docker container maps its /src/workspace/ to your working/training folder on the host side.
  
 Note: review the Makefile targets for different runtime options.
 
@@ -40,7 +40,8 @@ You will need:
     * create a simlink in ~/docker-keras-cpu/cubeai to your installed X-Cube-AI version, typically under:  ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>
 
 ### building the image
-Edit the Makefile to change the version#
+Don't forget to edit the Makefile to change the version#
+
 Open a terminal into your ~/docker-cubeai-cpu and run:
 ```console
  foo@bar: ~/docker-cubeai-cpu$ make build
