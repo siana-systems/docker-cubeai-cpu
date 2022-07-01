@@ -2,7 +2,7 @@
 
 This repo provides a docker image for deep-learning development targeting the STMicroelectronics [Cube-AI](https://www.st.com/en/embedded-software/x-cube-ai.html). It includes most typical packages needed to process & train a model using TensorFlow/Keras and compiling the resulting model using the Cube-AI command-line interface.
 
-## Running the SIANA image
+## Using the SIANA image
 
 Note: the following instructions were tested on Linux/Ubuntu 18.04
 
@@ -50,6 +50,8 @@ Docker will launch and proceed to build a new image named: "tf-cubeai-cpu:vx"
 
 On completion, you should see the new image listed: 
 ```console
-foo@bar: ~/docker-keras-cpu$ docker image list
+foo@bar: ~/docker-cubeai-cpu$ docker image list
 ```
+
+This new image will be used by the Makefile to launch a new container (as described in [Using the SIANA Image].)
 
