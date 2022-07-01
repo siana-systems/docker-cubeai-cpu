@@ -16,7 +16,6 @@ FROM debian:bullseye
 ENV NB_USER siana
 ENV NB_UID 1000
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
-ENV PATH="/home/siana/.local/bin/:$PATH"
 
 # Copy Cube.AI
 COPY --chown=siana:root cubeai /opt/cubeai
@@ -52,18 +51,19 @@ RUN chown $NB_USER $CONDA_DIR -R && \
 
 USER $NB_USER
 
-# install TensorFlow
+# install PIP dependencies
 RUN pip install --upgrade pip && \
-    pip install --ignore-installed six \
+    pip install --ignore-installed \
+      six \
       invoke         \
+      tensorflow-cpu \
+      tensorflow-estimator \
       sklearn_pandas \
-      tensorflow \
       keras-tuner
 
 # install python modules...
 RUN conda install \
       bcolz \
-      h5py \
       matplotlib \
       mkl \
       nose \
@@ -71,7 +71,6 @@ RUN conda install \
       Pillow \
       pandas \
       pydot \
-      pygpu \
       pyyaml \
       scikit-learn
 

@@ -40,6 +40,7 @@ You will need:
     * use CubeMX to create a dummy project and select the X-Cube-AI package => it will force download the remaining dependencies.
     * make a copy of X-Cube-AI linux in ~/docker-keras-cpu/cubeai
       you can find X-Cube-AI under:  ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>/Utility/linux
+    * if needed: chmod 775 cubeai/stm32ai
 
 ### building the image
 Don't forget to edit the Makefile to change the version#
