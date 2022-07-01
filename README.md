@@ -1,10 +1,9 @@
 # STM32 Cube-AI Development Docker for CPU-Host
 
-This repo provides a docker image for deep-learning development targeting the STMicroelectronics Cube-AI platform.
-
-At its core, it includes a cube-ai compatible versions of TensorFlow and Keras, aka keras.io. In addition, several typical packages are included to help with parsing data (images and audio, refer to the Dockerfile for details.) Note: this dockerfile is based on the `Dockerfile` of the [official Keras-Docker](https://github.com/keras-team/keras/tree/master/docker), which initially targetted GPU host machines.
+This repo provides a docker image for deep-learning development targeting the STMicroelectronics [Cube-AI](https://www.st.com/en/embedded-software/x-cube-ai.html). It includes most typical packages needed to process & train a model using TensorFlow/Keras and compiling the resulting model using the Cube-AI command-line interface.
 
 ## Running the SIANA image
+
 Note: the following instructions were tested on Linux/Ubuntu 18.04
 
 To run a container from the SIANA hosted image on Docker Hub, you'll need to:
@@ -12,25 +11,26 @@ To run a container from the SIANA hosted image on Docker Hub, you'll need to:
   * check that you have *make* installed, if not:
     * *sudo apt-get update*
     * *sudo apt-get install make*
-  * download/save the *Makefile* in a working directory
+  * download/save the *Makefile* from this repo in your training directory
   
-Assuming that you copied the *Makefile* in your home (~/), to run the container:
+To run the container in bash mode:
  ```console
  foo@bar: ~/$ make bash
  ```
-Docker will launch and proceed to download the SIANA image form Docker Hub (which may take a while...) Then, it'll run a container and open a bash terminal into it. From this terminal, you can run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.)
-  
-The doker container maps /src/workspace/ to your ~/ directory on the host side.
+The fist time around, Docker will proceed to download the SIANA image form Docker Hub (which may take a while...) Then, it'll run a container and open a bash terminal into it. From this terminal, you can run your TensorFlow/Keras python scripts and/or the Cube-AI CLI (stm32cubeai.) The docker container maps its /src/workspace/ to your working/training folder on the host side.
  
 Note: review the Makefile targets for different runtime options.
 
 
 ## How to build a new image
 
+If you need to update the docker image...
+
 ### Pre-requisites
+
 Notes:
   * the following instructions were tested on Linux/Ubuntu 18.04
-  * the following instructions assumed the root path under: ~/docker-keras-cpu
+  * the following instructions assumed the root path under: ~/docker-cubeai-cpu
  
 You will need:
   * to install [Docker Engine](https://docs.docker.com/engine/install/)
@@ -40,11 +40,12 @@ You will need:
     * create a simlink in ~/docker-keras-cpu/cubeai to your installed X-Cube-AI version, typically under:  ~/STM32Cube/Repository/Packs/STMicroelectronics/X-Cube-AI/<M.m.b>
 
 ### building the image
-Open a terminal into your ~/docker-keras-cpu and run:
+Edit the Makefile to change the version#
+Open a terminal into your ~/docker-cubeai-cpu and run:
 ```console
- foo@bar: ~/docker-keras-cpu$ make build
+ foo@bar: ~/docker-cubeai-cpu$ make build
 ```
-Docker will launch and proceed to build a new image named: "tf1.15-keras2.3.1-cpu"
+Docker will launch and proceed to build a new image named: "tf-cubeai-cpu:vx"
 
 On completion, you should see the new image listed: 
 ```console

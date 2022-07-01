@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------------------
 # @author: SIANA
-# @date: 08/2020 (update)
+# @date: 06/2022 (update)
 # @brief: Admin makefile to build a Cube.AI docker/keras image for CPU host.
 # @description:
 #       This image is meant to be used to train models using TF/Keras that are intended
@@ -19,7 +19,7 @@ help:
 # Docker image info
 NAME="siana/tf-cubeai-cpu"
 VERSION="v1"
-DOCKER_FILE=Dockerfile
+DOCKER_FILE=Dockerfile 
 DOCKER=docker
 
 # Docker-Hub
