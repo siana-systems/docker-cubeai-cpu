@@ -2,8 +2,7 @@
 # @author: SIANA Systems
 # @date: 04/2018 (original)
 #
-# Docker used for training models for ST Cube.AI
-#  => now support TF 2.5
+# Docker used for training models for ST Cube.AI using TF/Keras.
 #
 # IMPORTANT: a copy of the Cube.AI must be present under: ./cubeai
 #
@@ -50,7 +49,6 @@ ENV CONDA_DIR /opt/conda
 ENV PATH $CONDA_DIR/bin:$PATH
 
 RUN wget --quiet --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    echo "1314b90489f154602fd794accfc90446111514a5a72fe1f71ab83e07de9504a7 *Miniconda3-latest-Linux-x86_64.sh" | sha256sum -c - && \
     /bin/bash /Miniconda3-latest-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
     rm Miniconda3-latest-Linux-x86_64.sh && \
     echo export PATH=$CONDA_DIR/bin:'$PATH' > /etc/profile.d/conda.sh

@@ -6,7 +6,7 @@
 #       This image is meant to be used to train models using TF/Keras that are intended
 #       to run on STM32 MCUs using Cube-AI. As such, it includes Cube-AI compatible
 #       versions of TF/Keras and the Cube-AI CLI. It also includes typical packages used
-#       process data (images and audio.) See the Dockerfile for details.
+#       to process data (images and audio.) See the Dockerfile for details.
 #
 # @note: The docker image is tagged using a human-readable version and its git commit#
 #       
@@ -17,8 +17,8 @@ help:
 	@cat Makefile
 
 # Docker image info
-NAME="siana/tf2.5-cubeai7.0-cpu"
-VERSION="v2"
+NAME="siana/tf-cubeai-cpu"
+VERSION="v1"
 DOCKER_FILE=Dockerfile
 DOCKER=docker
 
