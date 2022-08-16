@@ -18,7 +18,7 @@ help:
 
 # Docker image info
 NAME="siana/tf-cubeai-cpu"
-VERSION="v1"
+VERSION="v2"
 DOCKER_FILE=Dockerfile 
 DOCKER=docker
 

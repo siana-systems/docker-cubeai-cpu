@@ -18,7 +18,7 @@ ENV NB_UID 1000
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
 
 # Copy Cube.AI
-COPY --chown=siana:root cubeai /opt/cubeai
+COPY --chown=siana:root cubeai-7.2 /opt/cubeai
 ENV X_CUBE_AI_DIR /opt/cubeai
 ENV PATH $X_CUBE_AI_DIR:$PATH
 
